@@ -1,4 +1,4 @@
-USE OMBD_Simulacro;
+USE OMBD;
 
 INSERT INTO `Punicao` VALUES 
 (1,1,'854984894987','Detenção',10,'2018-06-23'),

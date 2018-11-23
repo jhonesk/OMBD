@@ -1,4 +1,4 @@
-USE OMBD_Simulacro;
+USE OMBD;
 
 INSERT INTO `Promocao` VALUES 
 (1,'790875674645','Tempo de Servico','TEN','CAP','2018-09-14'),
