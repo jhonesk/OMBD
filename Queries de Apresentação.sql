@@ -87,7 +87,7 @@ DELIMITER $$
 
 ------------------------------------------------
 
-USE OMBD $$ CREATE PROCEDURE spmissao() BEGIN 
+USE OMBD_Simulacro $$ CREATE PROCEDURE spmissao() BEGIN 
 
   SELECT Missao_Externa.nome_missao, Missao_Externa.tipo_missao , Missao_Externa.data_missao , Militar.nome_de_guerra, Militar.PG FROM Missao_Externa
   LEFT JOIN Missao_Atendida ON Missao_Atendida.idMissao = Missao_Externa.idMissao_Externa
@@ -96,8 +96,32 @@ USE OMBD $$ CREATE PROCEDURE spmissao() BEGIN
 END $$ CALL spmissao() $$
 
 
+SELECT
+  student.StudentID,
+  student.`Name`,
+  COUNT(attendance.AttendanceID) AS Total
+FROM
+  student
+LEFT JOIN attendance ON student.StudentID = attendance.StudentID
+GROUP BY student.StudentID,student.`Name`;
 
 
 
+
+DELIMITER $$
+
+
+USE OMBD_Simulacro $$ CREATE PROCEDURE spformatura() BEGIN 
+
+SELECT
+       Formatura.idFormatura,
+       Formatura.tipo_formatura,
+       COUNT(Formatura_Atendida.RA_Militar) 
+     FROM
+       Formatura
+     LEFT JOIN Formatura_Atendida ON Formatura.idFormatura = Formatura_Atendida.Id_Formatura_Atendida
+     LEFT JOIN Militar ON Formatura_Atendida.RA_Militar = Militar.RA_Militar GROUP BY Formatura.idFormatura ;
+
+END $$ CALL spformatura() $$
 
 

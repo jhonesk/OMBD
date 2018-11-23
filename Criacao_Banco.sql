@@ -5,7 +5,7 @@
 
 -- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: OMBD
+-- Host: localhost    Database: OMBD_Simulacro
 -- ------------------------------------------------------
 -- Server version	10.1.37-MariaDB
 
@@ -23,7 +23,7 @@
 --
 -- Table structure for table `Contato_Militar`
 --
-
+USE OMBD_Simulacro;
 DROP TABLE IF EXISTS `Contato_Militar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -143,6 +143,9 @@ CREATE TABLE `Formatura` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+CREATE INDEX formatura ON Formatura (tipo_formatura);
+
+
 --
 -- Dumping data for table `Formatura`
 --
@@ -201,6 +204,9 @@ CREATE TABLE `Militar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+CREATE INDEX PG ON Militar (PG);
+CREATE INDEX bateria ON Militar (Bateria);
+
 --
 -- Dumping data for table `Militar`
 --
@@ -258,7 +264,7 @@ CREATE TABLE `Missao_Externa` (
   KEY `Missao_Externa_ID` (`idMissao_Externa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+CREATE INDEX missao ON Missao_Externa (tipo_missao);
 --
 -- Dumping data for table `Missao_Externa`
 --
